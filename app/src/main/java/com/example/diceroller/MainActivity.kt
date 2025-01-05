@@ -23,7 +23,7 @@ class MainActivity : AppCompatActivity() {
             rollDice1()
         }
         
-        // Đảm bảo padding đúng khi có system bar
+        
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
@@ -37,17 +37,17 @@ class MainActivity : AppCompatActivity() {
         
         val diceImage1: ImageView = findViewById(R.id.imageView)
         
-        // Tạo hiệu ứng động xoay trước
+       
         val rotateAnimator = ObjectAnimator.ofFloat(diceImage1, "rotation", 0f, 180f)
         rotateAnimator.duration = 500
         rotateAnimator.repeatCount = 1
         
-        // Thêm lắng nghe kết thúc của hiệu ứng xoay
+       
         rotateAnimator.addListener(object : AnimatorListenerAdapter() {
-            // Ghi đè phương thức onAnimationEnd
+           
             override fun onAnimationEnd(animation: android.animation.Animator) {
                 super.onAnimationEnd(animation)
-                // Khi xoay kết thúc, cập nhật hình ảnh xúc xắc
+               
                 val drawableResource = when (diceRoll) {
                     1 -> R.drawable.number1
                     2 -> R.drawable.number2
@@ -60,7 +60,7 @@ class MainActivity : AppCompatActivity() {
             }
         })
         
-        // Bắt đầu xoay
+        
         rotateAnimator.start()
     }
     
@@ -70,17 +70,17 @@ class MainActivity : AppCompatActivity() {
         
         val diceImage1: ImageView = findViewById(R.id.imageView2)
         
-        // Tạo hiệu ứng động xoay trước
+       
         val rotateAnimator = ObjectAnimator.ofFloat(diceImage1, "rotation", 0f, 180f)
         rotateAnimator.duration = 500
         rotateAnimator.repeatCount = 1
         
-        // Thêm lắng nghe kết thúc của hiệu ứng xoay
+        
         rotateAnimator.addListener(object : AnimatorListenerAdapter() {
-            // Ghi đè phương thức onAnimationEnd
+            
             override fun onAnimationEnd(animation: android.animation.Animator) {
                 super.onAnimationEnd(animation)
-                // Khi xoay kết thúc, cập nhật hình ảnh xúc xắc
+               
                 val drawableResource = when (diceRoll) {
                     1 -> R.drawable.number1
                     2 -> R.drawable.number2
@@ -93,11 +93,11 @@ class MainActivity : AppCompatActivity() {
             }
         })
         
-        // Bắt đầu xoay
+        
         rotateAnimator.start()
     }
     
-    // Lớp Dice
+   
     class Dice(val numSides: Int) {
         fun roll(): Int {
             return (1..numSides).random()
